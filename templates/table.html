@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link  rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        header {
+            display: flex;
+            padding: 0 10%;
+            justify-content: space-between;
+        }
+        header>div {
+            text-align: center;
+        }
+        header .title {
+            padding: 20px 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        header .tabbar {
+            display: flex;
+
+        }
+        header>div>div {
+            padding: 20px 40px;
+            font-size: 20px;
+
+
+        }
+        header>div>div>a {
+
+            color: aquamarine;
+        }
+        header>div>div>a:hover {
+            color: red;
+        }
+        section {
+            background-color: lightblue;
+            padding: 50px 10%;
+            height: 82vh;
+            overflow-y: scroll;
+
+        }
+
+
+        footer {
+            background-color: #333;
+            height: 11vh;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+
+        pre {
+            background: none;
+            border: none;
+            font-size: 13px;
+            font-family: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title">豆瓣电影榜数据分析</div>
+        <div class="tabbar">
+            <div><a href="/home">首页</a></div>
+            <div><a href="/table">总表</a></div>
+            <div><a href="/rate">评价</a></div>
+            <div><a href="/word">词云</a></div>
+        </div>
+    </header>
+    <section>
+       <table class="table table-striped">
+           <tr>
+               <th>排名</th>
+               <th>电影名</th>
+               <th>其它别名</th>
+               <th>详情</th>
+               <th>评分</th>
+               <th>评价人数</th>
+               <th>电影概述</th>
+           </tr>
+           {% for data in datalist %}
+           <tr>
+               <td>{{ data[0] }}</td>
+               <td>{{ data[3] }}</td>
+               <td>{{ data[4] }}</td>
+               <td><pre>{{ data[5] }}></pre></td>
+               <td>{{ data[6] }}</td>
+               <td>{{ data[7] }}</td>
+               <td>{{ data[8] }}</td>
+           </tr>
+           {%   endfor %}
+       </table>
+    </section>
+    <footer>
+        已经到底啦~
+    </footer>
+</body>
+</html>

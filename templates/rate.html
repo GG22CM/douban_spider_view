@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        header {
+            display: flex;
+            padding: 0 10%;
+            justify-content: space-between;
+        }
+        header>div {
+            text-align: center;
+        }
+        header .title {
+            padding: 20px 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        header .tabbar {
+            display: flex;
+
+        }
+        header>div>div {
+            padding: 20px 40px;
+            font-size: 20px;
+
+
+        }
+        header>div>div>a {
+
+            color: aquamarine;
+        }
+        header>div>div>a:hover {
+            color: red;
+        }
+        section {
+            background-color: lightblue;
+            padding: 50px 10%;
+            height: 70vh;
+        }
+
+
+        footer {
+            background-color: #333;
+            height: 11vh;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title">豆瓣电影榜数据分析</div>
+        <div class="tabbar">
+            <div><a href="/home">首页</a></div>
+            <div><a href="/table">总表</a></div>
+            <div><a href="/rate">评价</a></div>
+            <div><a href="/word">词云</a></div>
+        </div>
+    </header>
+    <section id="main">
+
+    </section>
+    <footer>
+        已经到底啦~
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+    <script type="text/javascript">
+
+        let myEcharts = echarts.init(document.querySelector('#main'))
+        option = {
+              xAxis: {
+                type: 'category',
+                data: {{ xVals }},
+                  name: '评分'
+
+              },
+              yAxis: {
+                type: 'value',
+                  name: '电影数量'
+              },
+              series: [
+                {
+                  data: {{ yVals }},
+                  type: 'bar',
+                  showBackground: true,
+                  backgroundStyle: {
+                    color: 'rgba(180, 180, 180, 0.2)'
+                  }
+                }
+              ]
+            }
+            myEcharts.setOption(option)
+    </script>
+</body>
+</html>
